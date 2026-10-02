@@ -1,0 +1,250 @@
+:root {
+  --paper: #EDE7DA;
+  --card: #FAF7F0;
+  --ink: #2B2521;
+  --ink-soft: #6B6152;
+  --rule: #C9C0B0;
+  --accent: #2F5D62;
+  --accent-soft: #4F7B80;
+  --done: #7C8B6F;
+  --danger: #A24B3F;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  background-image:
+    repeating-linear-gradient(transparent, transparent 27px, rgba(43,37,33,0.035) 28px);
+  color: var(--ink);
+  font-family: "IBM Plex Mono", monospace;
+  min-height: 100vh;
+}
+
+.ledger {
+  max-width: 420px;
+  margin: 4.5rem auto;
+  padding: 0 1.25rem;
+}
+
+.ledger-card {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  box-shadow: 0 1px 0 var(--rule), 0 18px 40px -28px rgba(43, 37, 33, 0.45);
+  padding: 2.1rem 2rem 1.75rem;
+}
+
+.ledger-title {
+  font-family: "Fraunces", serif;
+  font-weight: 600;
+  font-size: 2rem;
+  letter-spacing: -0.01em;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.ledger-subtitle {
+  color: var(--ink-soft);
+  font-size: 0.8rem;
+  margin: 0.35rem 0 0;
+}
+
+.ledger-rule {
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin: 1.25rem 0 0.25rem;
+}
+
+/* ---- todo rows ---- */
+
+.todo-rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.todo-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.todo-row:last-child {
+  border-bottom: none;
+}
+
+.todo-check {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.3em;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.95rem;
+  color: var(--accent);
+  cursor: pointer;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.todo-check::before { content: "[ ]"; }
+.todo-check:checked::before { content: "[×]"; color: var(--done); }
+
+.todo-label {
+  flex: 1;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.todo-label.done {
+  color: var(--ink-soft);
+  text-decoration: line-through;
+  text-decoration-color: var(--rule);
+}
+
+.todo-delete {
+  background: none;
+  border: none;
+  color: var(--danger);
+  font-family: inherit;
+  font-size: 0.75rem;
+  cursor: pointer;
+  padding: 0;
+  opacity: 0.55;
+  transition: opacity 0.15s ease;
+}
+
+.todo-delete:hover { opacity: 1; }
+
+.empty-row {
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+  padding: 1rem 0;
+  font-style: italic;
+}
+
+/* ---- add-todo line ---- */
+
+.add-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1rem;
+  padding-top: 0.9rem;
+  border-top: 1px dashed var(--rule);
+}
+
+.add-input {
+  flex: 1;
+  border: none;
+  border-bottom: 1px solid var(--rule);
+  background: transparent;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: var(--ink);
+  padding: 0.3rem 0.1rem;
+}
+
+.add-input:focus {
+  outline: none;
+  border-bottom-color: var(--accent);
+}
+
+.add-input::placeholder { color: var(--ink-soft); opacity: 0.7; }
+
+.btn {
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 500;
+  background: var(--accent);
+  color: var(--card);
+  border: none;
+  padding: 0.45rem 0.85rem;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.btn:hover { background: var(--accent-soft); }
+
+.btn:focus-visible, .todo-check:focus-visible, .add-input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ---- auth form ---- */
+
+.field {
+  display: block;
+  margin-top: 1.1rem;
+}
+
+.field-label {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+  margin-bottom: 0.3rem;
+}
+
+.field-input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid var(--rule);
+  background: transparent;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--ink);
+  padding: 0.35rem 0.1rem;
+}
+
+.field-input:focus {
+  outline: none;
+  border-bottom-color: var(--accent);
+}
+
+.auth-submit {
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 0.6rem;
+}
+
+.auth-switch {
+  margin-top: 1.1rem;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+.form-message {
+  margin-top: 0.9rem;
+  font-size: 0.8rem;
+  color: var(--danger);
+}
+
+.form-message.info {
+  color: var(--accent);
+}
+
+.loading-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  color: var(--ink-soft);
+  font-family: "IBM Plex Mono", monospace;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn, .todo-delete { transition: none; }
+}
